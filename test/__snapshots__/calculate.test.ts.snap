@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the adjustments are correct for too-tall videos: Same width, significantly taller 1`] = `
+{
+  "height": 10,
+  "top": -4.5,
+}
+`;
+
+exports[`the adjustments are correct for too-tall videos: Same width, slightly taller 1`] = `
+{
+  "height": 1.5,
+  "top": -0.25,
+}
+`;
+
+exports[`the adjustments are correct for too-tall videos: Wider, slightly taller 1`] = `
+{
+  "height": 4,
+  "top": -1.5,
+}
+`;
+
+exports[`the adjustments are correct for too-wide videos: Same height, significantly wider 1`] = `
+{
+  "left": -2,
+  "width": 5,
+}
+`;
+
+exports[`the adjustments are correct for too-wide videos: Same height, slightly wider 1`] = `
+{
+  "left": -0.125,
+  "width": 1.25,
+}
+`;
+
+exports[`the adjustments are correct for too-wide videos: Taller, slightly wider 1`] = `
+{
+  "left": -0.25,
+  "width": 1.5,
+}
+`;
