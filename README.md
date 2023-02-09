@@ -17,7 +17,7 @@ vimeoEmbedCover(player);
 
 The player's `<iframe>` element will be resized & repositioned within its parent.
 
-As the positioning is configured via CSS, the player's containing element (the element passed in to `new Vimeo.Player(element)`) must also ldhave `position: relative` or `position: absolute` set.
+As the positioning is configured via CSS, the player's containing element (the element passed in to `new Vimeo.Player(element)`) must also have `position: relative` or `position: absolute` set.
 
 ---
 
