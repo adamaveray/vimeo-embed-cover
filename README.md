@@ -1,5 +1,10 @@
 # vimeo-embed-cover
 
+[![View code coverage on codecov][codecov-badge]][codecov]
+
+[codecov]: https://codecov.io/gh/adamaveray/vimeo-embed-cover;
+[codecov-badge]: https://codecov.io/gh/adamaveray/vimeo-embed-cover/branch/main/graph/badge.svg
+
 A utility to scale a Vimeo embed to fill an element regardless of aspect ratio.
 
 Vimeo embeds letterbox to fit within their embedding iframe (equivalent to CSS's `object-fit: contain`). This utility dynamically scales up the embed to fill the container with the video content and hiding the letterboxing (equivalent to `object-fit: cover`).
