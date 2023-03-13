@@ -1,7 +1,7 @@
 /* eslint @typescript-eslint/no-magic-numbers: "off" -- Too many numbers to test */
 
 import { type AspectRatio, type Size } from '../src';
-import calculate from '../src/calculate';
+import calculate from '../src/lib/calculate';
 
 describe('the adjustments', () => {
   it.each<[string, AspectRatio]>([

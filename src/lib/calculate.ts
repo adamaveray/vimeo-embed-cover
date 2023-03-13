@@ -1,4 +1,4 @@
-import { type Adjustments, type AspectRatio, type Size } from './types';
+import { type Adjustments, type AspectRatio, type Size } from '../types';
 
 const HALF_MULTIPLIER = 0.5;
 

@@ -1,16 +1,13 @@
 import { type Player } from '@vimeo/player';
 
-import calculate from './calculate';
+import calculate from './lib/calculate';
+import { applyAdjustmentStyles, getVideoAspectRatio } from './lib/utils';
 import { type AspectRatio } from './types';
 
 export * from './types';
 
 interface PlayerWithElement extends Player {
   element: HTMLInputElement; // Not included in documented API but is available
-}
-
-function formatCssPercentage(value: number): string {
-  return `${value * 100}%`; // eslint-disable-line @typescript-eslint/no-magic-numbers -- It's part of the function
 }
 
 export default async function vimeoEmbedCover(player: PlayerWithElement): Promise<void> {
@@ -23,17 +20,11 @@ export default async function vimeoEmbedCover(player: PlayerWithElement): Promis
     return;
   }
 
-  const [videoWidth, videoHeight] = await Promise.all([player.getVideoWidth(), player.getVideoHeight()]);
-  let aspectRatio: AspectRatio = { width: videoWidth, height: videoHeight };
+  let aspectRatio: AspectRatio = await getVideoAspectRatio(player);
 
   const update = (containerSize: DOMRect): void => {
     const adjustments = calculate(aspectRatio, containerSize);
-    const { style } = playerElement;
-    style.position = 'absolute';
-    style.width = formatCssPercentage(adjustments.width ?? 1);
-    style.height = formatCssPercentage(adjustments.height ?? 1);
-    style.left = formatCssPercentage(adjustments.left ?? 0);
-    style.top = formatCssPercentage(adjustments.top ?? 0);
+    applyAdjustmentStyles(playerElement.style, adjustments);
   };
 
   const measureThenUpdate = (): void => {
