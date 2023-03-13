@@ -2,7 +2,7 @@
   "name": "vimeo-embed-cover",
   "description": "A utility to scale a Vimeo embed to fill an element regardless of aspect ratio.",
   "author": "Adam Averay (https://adamaveray.com.au/)",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "homepage": "https://github.com/adamaveray/vimeo-embed-cover",
   "repository": {
