@@ -6,11 +6,13 @@ import { type AspectRatio } from './types';
 
 export * from './types';
 
-interface PlayerWithElement extends Player {
-  element: HTMLInputElement; // Not included in documented API but is available
+interface PlayerWithElement<T extends HTMLElement = HTMLElement> extends Player {
+  element: T; // Not included in documented API but is available
 }
 
-export default async function vimeoEmbedCover(player: PlayerWithElement): Promise<void> {
+export default async function vimeoEmbedCover<T extends HTMLElement = HTMLElement>(
+  player: PlayerWithElement<T>,
+): Promise<void> {
   await player.ready();
 
   const playerElement = player.element;
