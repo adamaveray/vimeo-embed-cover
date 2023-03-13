@@ -47,7 +47,7 @@ export default async function vimeoEmbedCover(player: PlayerWithElement): Promis
 
   if (typeof ResizeObserver === 'undefined') {
     // Update when window changes on legacy browsers
-    window.addEventListener('resize', measureThenUpdate);
+    window.addEventListener('resize', measureThenUpdate, { passive: true });
   } else {
     // Update when wrapping element dimensions change
     new ResizeObserver(([entry]) => {
