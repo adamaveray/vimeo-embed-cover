@@ -2,7 +2,7 @@
 
 [![View code coverage on codecov][codecov-badge]][codecov]
 
-[codecov]: https://codecov.io/gh/adamaveray/vimeo-embed-cover;
+[codecov]: https://codecov.io/gh/adamaveray/vimeo-embed-cover
 [codecov-badge]: https://codecov.io/gh/adamaveray/vimeo-embed-cover/branch/main/graph/badge.svg
 
 A utility to scale a Vimeo embed to fill an element regardless of aspect ratio.
