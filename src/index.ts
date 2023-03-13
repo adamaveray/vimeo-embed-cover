@@ -1,15 +1,22 @@
-import type { Player } from '@vimeo/player';
-import type { AspectRatio } from './types';
+import { type Player } from '@vimeo/player';
+
 import calculate from './calculate';
+import { type AspectRatio } from './types';
 
 export * from './types';
 
-const formatCssPercentage = (value: number): string => value * 100 + '%';
+interface PlayerWithElement extends Player {
+  element: HTMLInputElement; // Not included in documented API but is available
+}
 
-export default async function vimeoEmbedCover(player: Player): Promise<void> {
+function formatCssPercentage(value: number): string {
+  return `${value * 100}%`; // eslint-disable-line @typescript-eslint/no-magic-numbers -- It's part of the function
+}
+
+export default async function vimeoEmbedCover(player: PlayerWithElement): Promise<void> {
   await player.ready();
 
-  const playerElement = (player as any).element as HTMLIFrameElement; // Not included in documented API but is available
+  const playerElement = player.element;
   const containerElement = playerElement.parentElement;
   if (containerElement == null) {
     // Player element detached from DOM
@@ -38,14 +45,16 @@ export default async function vimeoEmbedCover(player: Player): Promise<void> {
     measureThenUpdate();
   });
 
-  if (typeof ResizeObserver !== 'undefined') {
-    // Update when wrapping element dimensions change
-    new ResizeObserver((entries) => {
-      update(((entries as any)[0] as ResizeObserverEntry).contentRect);
-    }).observe(containerElement);
-  } else {
+  if (typeof ResizeObserver === 'undefined') {
     // Update when window changes on legacy browsers
     window.addEventListener('resize', measureThenUpdate);
+  } else {
+    // Update when wrapping element dimensions change
+    new ResizeObserver(([entry]) => {
+      if (entry != null) {
+        update(entry.contentRect);
+      }
+    }).observe(containerElement);
   }
 
   // Set initial position

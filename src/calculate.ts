@@ -1,4 +1,6 @@
-import type { Adjustments, AspectRatio, Size } from './types';
+import { type Adjustments, type AspectRatio, type Size } from './types';
+
+const HALF_MULTIPLIER = 0.5;
 
 export default function calculate(video: AspectRatio, container: Size): Adjustments {
   if (video.width <= 0 || video.height <= 0 || container.width <= 0 || container.height <= 0) {
@@ -9,27 +11,28 @@ export default function calculate(video: AspectRatio, container: Size): Adjustme
   const videoRatio = video.height / video.width;
   const containerRatio = container.height / container.width;
 
-  /* eslint-disable no-case-declarations */
   switch (true) {
-    case containerRatio > videoRatio:
+    case containerRatio > videoRatio: {
       // Container too wide - stretch to fill
       const comparisonA = containerRatio / videoRatio;
       return {
         width: comparisonA,
-        left: -(comparisonA - 1) / 2,
+        left: -(comparisonA - 1) * HALF_MULTIPLIER,
       };
+    }
 
-    case videoRatio > containerRatio:
+    case videoRatio > containerRatio: {
       // Container too tall - stretch to fill
       const comparisonB = videoRatio / containerRatio;
       return {
         height: comparisonB,
-        top: -(comparisonB - 1) / 2,
+        top: -(comparisonB - 1) * HALF_MULTIPLIER,
       };
+    }
 
-    default:
+    default: {
       // Perfect match
       return {};
+    }
   }
-  /* eslint-enable no-case-declarations */
 }

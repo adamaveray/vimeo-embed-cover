@@ -1,4 +1,6 @@
-import { AspectRatio, Size } from '../src';
+/* eslint @typescript-eslint/no-magic-numbers: "off" -- Too many numbers to test */
+
+import { type AspectRatio, type Size } from '../src';
 import calculate from '../src/calculate';
 
 describe('the adjustments', () => {
