@@ -1,13 +1,15 @@
-import { makeEslintConfig } from '@averay/codeformat';
-import globals from 'globals';
+/* eslint sort-keys: "error" -- Organise rules */
+
+import { globals, makeEslintConfig } from '@averay/codeformat';
 
 // Patch globals library
 delete globals.browser['AudioWorkletGlobalScope '];
 
 export default [
   {
-    ignores: ['dist/**/*'],
+    ignores: ['coverage/**/*', 'dist/**/*'],
   },
+  ...makeEslintConfig({ tsconfigPath: './tsconfig.json' }),
   {
     files: ['test/**/*'],
     languageOptions: {
@@ -20,5 +22,4 @@ export default [
       globals: { ...globals.browser, ...globals.es2015 },
     },
   },
-  ...makeEslintConfig({ tsconfigPath: './tsconfig.json' }),
 ];
