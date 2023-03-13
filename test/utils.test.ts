@@ -9,6 +9,7 @@ it.each<[percentage: number, formatted: string]>([
   [1, '100%'],
   [0, '0%'],
   [0.5, '50%'],
+  [-0.5, '-50%'],
 ])('formats CSS percentages', (percentage, expected) => {
   expect(formatCssPercentage(percentage)).toEqual(expected);
 });
