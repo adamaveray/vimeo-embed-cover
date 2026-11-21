@@ -1,3 +1,7 @@
+**This repository has been migrated to Codeberg: [codeberg.org/adamaveray/vimeo-embed-cover](https://codeberg.org/adamaveray/vimeo-embed-cover)**
+
+---
+
 # vimeo-embed-cover
 
 [![View code coverage on codecov][codecov-badge]][codecov]
