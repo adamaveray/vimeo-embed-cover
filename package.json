@@ -4,10 +4,13 @@
   "author": "Adam Averay (https://adamaveray.com.au/)",
   "version": "1.0.2",
   "license": "MIT",
-  "homepage": "https://github.com/adamaveray/vimeo-embed-cover",
+  "homepage": "https://codeberg.org/adamaveray/vimeo-embed-cover",
+  "bugs": {
+    "url": "https://codeberg.org/adamaveray/vimeo-embed-cover/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/adamaveray/vimeo-embed-cover.git"
+    "url": "git+https://codeberg.org/adamaveray/vimeo-embed-cover.git"
   },
   "type": "module",
   "source": "./src/index.ts",
